@@ -6,16 +6,16 @@ DB = Sequel.connect(:adapter => "mysql2",:database => "test",:host => "localhost
 
 babytree = DB[:babytree]
 
-#request = Typhoeus.get('http://www.babytree.com/community/club20151/?orderby=create_ts')
-for i in 1..44 
-	p "http://www.babytree.com/community/club201501/index_#{i}.html#topicpos"
-	request = Typhoeus.get("http://www.babytree.com/community/club201501/index_#{i}.html#topicpos") 
+for i in 1..500
+	p "http://www.babytree.com/community/yuer/index_#{i}.html?orderby=create_ts"
+	request = Typhoeus.get("http://www.babytree.com/community/yuer/index_#{i}.html?orderby=create_ts") 
 	body = request.response_body
 	doc = Nokogiri::HTML.parse(body)
 	head = doc.css('head > title').text.strip
 	p head
-	#p doc.xpath('//body/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[2]').text.strip
-	doc.xpath('//body/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/table/tbody/tr').each do |result|
+
+	#p doc.xpath('//body/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]').text.strip
+	doc.xpath('//body/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/table/tbody/tr').each do |result|
 		title = result.css('td.topicTitle > span.topicTitleSelf > a').text.strip
 		url = result.css('td.topicTitle > span.topicTitleSelf > a').attr('href').value
 		view = result.css('td.topicStat > span.topicViews').text.strip
@@ -51,15 +51,4 @@ for i in 1..44
 			:article => article)
 		sleep(1)
 	end
-	sleep(3)
 end
-
-
-# request = Typhoeus.get('http://www.babytree.com/community/group39967/topic_29717973.html#nav_title_target') 
-# body = request.response_body
-# doc = Nokogiri::HTML.parse(body)
-# head = doc.css('head > title').text.strip
-# p head
-# p doc.css('body > div.community > div.community-birthclub > div.community-body-wrapper > div.clubTopicSingle > div.clubTopicList > div.clubTopicSinglePost > div.postBody > div.post-title > p.postTime').first.text.strip
-# p doc.css('body > div.community > div.community-birthclub > div.community-body-wrapper > div.clubTopicSingle > div.clubTopicList > div.clubTopicSinglePost > div.postBody > div.postContent > p').text.strip
-# p doc.css('body > div.community > div.community-group > div.community-body-wrapper > div.clubTopicSingle > div.clubTopicList > div.clubTopicSinglePost > div.postBody > div.postContent > p').text.strip

@@ -1,0 +1,13 @@
+require "typhoeus"
+require 'nokogiri' 
+
+for i in 1..30
+	request = Typhoeus.get("http://dyall.2121921.net/2013-1-#{i}.htm") 
+	body = request.response_body
+	body = body.encode("utf-8", "gbk", :invalid => :replace, :undef => :replace)
+	doc = Nokogiri::HTML.parse(body)
+	head = doc.css('head > title').text.strip
+	if head == ""
+		p 123
+	end
+end
