@@ -28,10 +28,10 @@ a.each do |aa|
 	p aa
 	uri = []
 	miss = []
-	uri << "http://bbs.pcbaby.com.cn/time_604800-#{aa[:id]}_postat.html"
+	uri << "http://bbs.pcbaby.com.cn/time_2592000-#{aa[:id]}_postat.html"
 	if aa[:page] >= 2
 		for i in 2..aa[:page]
-			uri << "http://bbs.pcbaby.com.cn/time_604800-#{aa[:id]}-#{i}_postat.html"
+			uri << "http://bbs.pcbaby.com.cn/time_2592000-#{aa[:id]}-#{i}_postat.html"
 		end
 	end
 	uri.each do |uri|
@@ -53,14 +53,15 @@ a.each do |aa|
 					reply = result.css('td.reply > i').text
 					view = result.css('td.reply > span').text
 
-					if time >= "14-11-14" && time <= "14-11-17"
+					if time >= "14-11-17" && time <= "14-11-24"
 						#p 123
 						sleep(1)
 						request = Typhoeus.get(url)
 						body = request.response_body
 						js = Nokogiri::HTML.parse(body)
 						texts = js.css('head > title').text.strip
-						article = js.xpath('//body/div[3]/div[4]/div[1]/div[2]/table/tr[1]/td[1]/div[2]').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
+						#article = js.xpath('//body/div[3]/div[4]/div[1]/div[2]/table/tr[1]/td[1]/div[2]').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
+						article = js.css('div.replyBody').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
 						puts "type = #{type}"
 						puts "title = #{title}"
 						puts "author = #{author}"
@@ -117,14 +118,15 @@ a.each do |aa|
 						reply = result.css('td.reply > i').text
 						view = result.css('td.reply > span').text
 
-						if time >= "14-11-14" && time <= "14-11-17"
+						if time >= "14-11-17" && time <= "14-11-24"
 							sleep(1)
 							#p 123
 							request = Typhoeus.get(url)
 							body = request.response_body
 							js = Nokogiri::HTML.parse(body)
 							texts = js.css('head > title').text.strip
-							article = js.xpath('//body/div[3]/div[4]/div[1]/div[2]/table/tr[1]/td[1]/div[2]').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
+							#article = js.xpath('//body/div[3]/div[4]/div[1]/div[2]/table/tr[1]/td[1]/div[2]').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
+							article = js.css('div.replyBody').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
 							puts "type = #{type}"
 							puts "title = #{title}"
 							puts "author = #{author}"
