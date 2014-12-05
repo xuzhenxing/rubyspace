@@ -12,7 +12,7 @@ for i in 1..40
 	                                 method: :post,
 	                                 params: {
 	                                 	'provinceld' => '-1',
-	                                 	'cityID' => '-1',
+	                                 	'cityId' => '-1',
 	                                 	'brandId' => '-1',
 	                                 	'modelId' => '-1',
 	                                 	'orderBy' => 'create_time',

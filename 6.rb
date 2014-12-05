@@ -4,6 +4,14 @@ require 'sequel'
 
 DB = Sequel.connect(:adapter => "mysql2",:database => "test",:host => "localhost",:user => "root",:password => "asd") # memory database
 
+DB.create_table :tmall do
+  primary_key :id
+  String :brand
+  String :model
+  String :tag
+  String :tag_article
+  Datetime :date
+end
 # pcbaby = DB[:pcbaby]
 
 # # pcbaby.each do |pcbaby|

@@ -53,7 +53,7 @@ a.each do |aa|
 					reply = result.css('td.reply > i').text
 					view = result.css('td.reply > span').text
 
-					if time >= "14-11-17" && time <= "14-11-24"
+					if time >= "14-11-24" && time <= "14-12-01"
 						#p 123
 						sleep(1)
 						request = Typhoeus.get(url)
@@ -118,7 +118,7 @@ a.each do |aa|
 						reply = result.css('td.reply > i').text
 						view = result.css('td.reply > span').text
 
-						if time >= "14-11-17" && time <= "14-11-24"
+						if time >= "14-11-24" && time <= "14-12-01"
 							sleep(1)
 							#p 123
 							request = Typhoeus.get(url)

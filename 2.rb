@@ -27,12 +27,9 @@ for i in 0..9
 				p texts
 				if texts != "Error"
 					a.delete("#{uri}")
-					article = js.xpath('//body/div[3]/div[4]/div[1]/div[2]/table/tr[1]/td[1]/div[2]').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
+					article = js.css('div.replyBody').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
 					if article == ""
-						article = js.xpath('//body/div[3]/div[4]/div[1]/div[2]/table/tr[1]/td[1]/div[3]').text.strip.gsub(/\n/,'').gsub(/\t/,'').gsub(/\r/,'')
-						if article == ""
-							article = "纯图片"
-						end
+						article = "纯图片"
 					end
 					pcbaby.where(:url => "#{uri}").update(:article => "#{article}")
 					p article
