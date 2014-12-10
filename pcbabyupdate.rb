@@ -7,22 +7,22 @@ DB = Sequel.connect(:adapter => "mysql2",:database => "test",:host => "localhost
 pcbaby = DB[:pcbaby]
 
 
-a = [{:type1 => "母婴孕育-备孕妈妈",:id => 1914,:page => 10},
-{:type1 => "母婴孕育-怀孕妈妈",:id => 1915,:page => 5},
-{:type1 => "母婴孕育-新手妈妈",:id => 1948,:page => 30},
-{:type1 => "母婴孕育-早教幼教",:id => 1988,:page => 8},
-{:type1 => "母婴孕育-二胎时代",:id => 2190,:page => 2},
-{:type1 => "生活休闲-宝宝秀场",:id => 1917,:page => 3},
-{:type1 => "生活休闲-健康辣妈",:id => 2130,:page => 8},
-{:type1 => "生活休闲-家庭游记",:id => 1828,:page => 1},
-{:type1 => "生活休闲-晒货殿堂",:id => 1799,:page => 4},
-{:type1 => "生活休闲-美食分享",:id => 1820,:page => 3},
-{:type1 => "生活休闲-生活百科",:id => 2140,:page => 4},
-{:type1 => "生活休闲-女人心情",:id => 1771,:page => 14},
-{:type1 => "生活休闲-免费试用",:id => 1929,:page => 4},
-{:type1 => "生活休闲-谈天说地",:id => 1776,:page => 10},
-{:type1 => "生活休闲-数码家庭",:id => 2200,:page => 2},
-{:type1 => "版务论坛-版务专区",:id => 1782,:page => 1}]
+a = [{:type1 => "母婴孕育-备孕妈妈",:id => 1914,:page => 13},
+{:type1 => "母婴孕育-怀孕妈妈",:id => 1915,:page => 7},
+{:type1 => "母婴孕育-新手妈妈",:id => 1948,:page => 40},
+{:type1 => "母婴孕育-早教幼教",:id => 1988,:page => 10},
+{:type1 => "母婴孕育-二胎时代",:id => 2190,:page => 3},
+{:type1 => "生活休闲-宝宝秀场",:id => 1917,:page => 4},
+{:type1 => "生活休闲-健康辣妈",:id => 2130,:page => 10},
+{:type1 => "生活休闲-家庭游记",:id => 1828,:page => 2},
+{:type1 => "生活休闲-晒货殿堂",:id => 1799,:page => 6},
+{:type1 => "生活休闲-美食分享",:id => 1820,:page => 5},
+{:type1 => "生活休闲-生活百科",:id => 2140,:page => 6},
+{:type1 => "生活休闲-女人心情",:id => 1771,:page => 18},
+{:type1 => "生活休闲-免费试用",:id => 1929,:page => 8},
+{:type1 => "生活休闲-谈天说地",:id => 1776,:page => 15},
+{:type1 => "生活休闲-数码家庭",:id => 2200,:page => 3},
+{:type1 => "版务论坛-版务专区",:id => 1782,:page => 2}]
 
 a.each do |aa|
 	p aa
@@ -53,7 +53,7 @@ a.each do |aa|
 					reply = result.css('td.reply > i').text
 					view = result.css('td.reply > span').text
 
-					if time >= "14-11-24" && time <= "14-12-01"
+					if time >= "14-12-01" && time <= "14-12-09"
 						#p 123
 						sleep(1)
 						request = Typhoeus.get(url)
@@ -94,7 +94,7 @@ a.each do |aa|
 	end
 	p miss
 
-	sleep(30)
+	sleep(10)
 
 
 	begin
@@ -118,7 +118,7 @@ a.each do |aa|
 						reply = result.css('td.reply > i').text
 						view = result.css('td.reply > span').text
 
-						if time >= "14-11-24" && time <= "14-12-01"
+						if time >= "14-12-01" && time <= "14-12-09"
 							sleep(1)
 							#p 123
 							request = Typhoeus.get(url)

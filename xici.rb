@@ -9,8 +9,9 @@ proxy = DB[:proxy]
 
 request = Typhoeus.get('www.xici.net.co') 
 body = request.response_body
+puts body.encoding
 doc = Nokogiri::HTML.parse(body)
-
+puts doc.encoding
 doc.css('tr:not(.subtitle)').each do |result|
       ip = result.xpath('td[2]').text.strip
       port = result.xpath('td[3]').text.strip
